@@ -1,6 +1,7 @@
-import Card from "./Card";
+import Card from "../Shared/Card";
 import ExpenseItem from "./ExpenseItem";
 import './Expenses.css';
+
 const Expenses = ({expenses}) => {
     return (
         <Card className="expenses">
