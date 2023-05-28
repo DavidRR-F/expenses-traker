@@ -3,6 +3,7 @@ import Card from "../Shared/Card";
 import ExpensesFilter from "../newExpense/ExpensesFilter";
 import './Expenses.css';
 import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses = ({expenses}) => {
     const [filteredYear, setFilteredYear] = useState(new Date().getFullYear().toString());
@@ -16,6 +17,7 @@ const Expenses = ({expenses}) => {
     return (
         <Card className="expenses">
             <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangedHandler}/>
+            <ExpensesChart expenses={filteredExpenses}/>
             <ExpensesList expenses={filteredExpenses}/>
         </Card>
     )
