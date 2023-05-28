@@ -1,0 +1,11 @@
+.expenses-list {
+    list-style: none;
+    padding: 0;
+}
+
+.expenses__not-found {
+    color: aliceblue;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+  }

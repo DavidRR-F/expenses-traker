@@ -3,22 +3,21 @@ import Card from "../Shared/Card";
 import ExpensesFilter from "../newExpense/ExpensesFilter";
 import ExpenseItem from "./ExpenseItem";
 import './Expenses.css';
+import ExpensesList from "./ExpensesList";
 
 const Expenses = ({expenses}) => {
-    const [filteredYear, setFilteredYear] = useState(new Date().getFullYear());
+    const [filteredYear, setFilteredYear] = useState(new Date().getFullYear().toString());
     const filterChangedHandler = selectedYear => {
         setFilteredYear(selectedYear)
     };
+    const filteredExpenses = expenses.filter(expense => {
+        return expense.date.getFullYear().toString() === filteredYear;
+    });
+
     return (
         <Card className="expenses">
             <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangedHandler}/>
-            {expenses.map((expense, index) => (
-                <ExpenseItem
-                    title={expense.title}
-                    date={expense.date}
-                    amount={expense.amount}
-                />
-            ))}
+            <ExpensesList expenses={filteredExpenses}/>
         </Card>
     )
 }
