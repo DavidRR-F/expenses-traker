@@ -5,6 +5,22 @@ import React, { useState } from 'react';
 const ExpenseForm = (props) => {
     const defaultState = {title: '', amount: '', date: ''}
     const [userInput, setUserInput] = useState(defaultState)
+    
+    const [isFormOpen, setIsFormOpen] = useState(false);
+    const handleFormOpen = () => {
+        setIsFormOpen(true);
+      };
+    
+      const handleFormClose = () => {
+        setIsFormOpen(false);
+      };
+      if(!isFormOpen) {
+        return (
+            <div className='new_expense__actions'>
+                <button onClick={handleFormOpen}>Add New Expense</button>
+            </div>
+        );
+      }
 
     const titleChangeHandler = (event) => {
         setUserInput((prevState) => {
@@ -61,7 +77,8 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className='new_expense__actions'>
-                <button type='submit'>App Expense</button>
+                <button onClick={handleFormClose}>Cancel</button>
+                <button type='submit'>Add Expense</button>
             </div>
         </form> 
     );
